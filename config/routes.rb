@@ -1,4 +1,6 @@
 Fakeblock::Application.routes.draw do
+  resources :books
+
   resources :musics
 
   resources :user_friend_relations
