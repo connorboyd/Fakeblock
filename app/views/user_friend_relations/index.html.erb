@@ -1,0 +1,29 @@
+<h1>Listing user_friend_relations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User id1</th>
+      <th>User id2</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_friend_relations.each do |user_friend_relation| %>
+      <tr>
+        <td><%= user_friend_relation.user_id1 %></td>
+        <td><%= user_friend_relation.user_id2 %></td>
+        <td><%= link_to 'Show', user_friend_relation %></td>
+        <td><%= link_to 'Edit', edit_user_friend_relation_path(user_friend_relation) %></td>
+        <td><%= link_to 'Destroy', user_friend_relation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User friend relation', new_user_friend_relation_path %>

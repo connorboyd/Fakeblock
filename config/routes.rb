@@ -1,4 +1,8 @@
 Fakeblock::Application.routes.draw do
+  resources :musics
+
+  resources :user_friend_relations
+
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
