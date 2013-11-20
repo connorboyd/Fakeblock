@@ -1,0 +1,31 @@
+<h1>Listing pending_friend_requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>From user</th>
+      <th>To user</th>
+      <th>Date requested</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pending_friend_requests.each do |pending_friend_request| %>
+      <tr>
+        <td><%= pending_friend_request.from_user_id %></td>
+        <td><%= pending_friend_request.to_user_id %></td>
+        <td><%= pending_friend_request.date_requested %></td>
+        <td><%= link_to 'Show', pending_friend_request %></td>
+        <td><%= link_to 'Edit', edit_pending_friend_request_path(pending_friend_request) %></td>
+        <td><%= link_to 'Destroy', pending_friend_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pending friend request', new_pending_friend_request_path %>

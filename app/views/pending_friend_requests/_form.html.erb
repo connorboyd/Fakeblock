@@ -1,0 +1,29 @@
+<%= form_for(@pending_friend_request) do |f| %>
+  <% if @pending_friend_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pending_friend_request.errors.count, "error") %> prohibited this pending_friend_request from being saved:</h2>
+
+      <ul>
+      <% @pending_friend_request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :from_user_id %><br>
+    <%= f.number_field :from_user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :to_user_id %><br>
+    <%= f.number_field :to_user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :date_requested %><br>
+    <%= f.datetime_select :date_requested %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

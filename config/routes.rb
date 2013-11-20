@@ -1,4 +1,6 @@
 Fakeblock::Application.routes.draw do
+  resources :pending_friend_requests
+
   resources :posts
 
   resources :movies

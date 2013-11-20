@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From user:</strong>
+  <%= @pending_friend_request.from_user_id %>
+</p>
+
+<p>
+  <strong>To user:</strong>
+  <%= @pending_friend_request.to_user_id %>
+</p>
+
+<p>
+  <strong>Date requested:</strong>
+  <%= @pending_friend_request.date_requested %>
+</p>
+
+<%= link_to 'Edit', edit_pending_friend_request_path(@pending_friend_request) %> |
+<%= link_to 'Back', pending_friend_requests_path %>
