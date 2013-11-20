@@ -1,4 +1,6 @@
 Fakeblock::Application.routes.draw do
+  resources :posts
+
   resources :movies
 
   resources :books
