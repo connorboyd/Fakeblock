@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  hometown: MyString
+  birthday: 2013-11-19
+  school: MyString
+  job: MyString
+  quotes: MyString
+
+two:
+  user_id: 1
+  hometown: MyString
+  birthday: 2013-11-19
+  school: MyString
+  job: MyString
+  quotes: MyString

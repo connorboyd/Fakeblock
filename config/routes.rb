@@ -1,4 +1,6 @@
 Fakeblock::Application.routes.draw do
+  resources :user_infos
+
   resources :pending_friend_requests
 
   resources :posts
