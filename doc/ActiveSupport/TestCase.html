@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class ActiveSupport::TestCase - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>test/test_helper.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="../Object.html">Object</a>
+  
+</nav>
+
+    
+    
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="../README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="../public/robots_txt.html">robots</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../ActiveSupport.html">ActiveSupport</a>
+  
+    <li><a href="../ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+  
+    <li><a href="../Fakeblock.html">Fakeblock</a>
+  
+    <li><a href="../Fakeblock/Application.html">Fakeblock::Application</a>
+  
+    <li><a href="../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../Book.html">Book</a>
+  
+    <li><a href="../BookTest.html">BookTest</a>
+  
+    <li><a href="../BooksController.html">BooksController</a>
+  
+    <li><a href="../BooksControllerTest.html">BooksControllerTest</a>
+  
+    <li><a href="../BooksHelper.html">BooksHelper</a>
+  
+    <li><a href="../BooksHelperTest.html">BooksHelperTest</a>
+  
+    <li><a href="../CreateBooks.html">CreateBooks</a>
+  
+    <li><a href="../CreateMovies.html">CreateMovies</a>
+  
+    <li><a href="../CreateMusics.html">CreateMusics</a>
+  
+    <li><a href="../CreatePendingFriendRequests.html">CreatePendingFriendRequests</a>
+  
+    <li><a href="../CreatePosts.html">CreatePosts</a>
+  
+    <li><a href="../CreateUserFriendRelations.html">CreateUserFriendRelations</a>
+  
+    <li><a href="../CreateUserInfos.html">CreateUserInfos</a>
+  
+    <li><a href="../CreateUsers.html">CreateUsers</a>
+  
+    <li><a href="../Movie.html">Movie</a>
+  
+    <li><a href="../MovieTest.html">MovieTest</a>
+  
+    <li><a href="../MoviesController.html">MoviesController</a>
+  
+    <li><a href="../MoviesControllerTest.html">MoviesControllerTest</a>
+  
+    <li><a href="../MoviesHelper.html">MoviesHelper</a>
+  
+    <li><a href="../MoviesHelperTest.html">MoviesHelperTest</a>
+  
+    <li><a href="../Music.html">Music</a>
+  
+    <li><a href="../MusicTest.html">MusicTest</a>
+  
+    <li><a href="../MusicsController.html">MusicsController</a>
+  
+    <li><a href="../MusicsControllerTest.html">MusicsControllerTest</a>
+  
+    <li><a href="../MusicsHelper.html">MusicsHelper</a>
+  
+    <li><a href="../MusicsHelperTest.html">MusicsHelperTest</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+    <li><a href="../PendingFriendRequest.html">PendingFriendRequest</a>
+  
+    <li><a href="../PendingFriendRequestTest.html">PendingFriendRequestTest</a>
+  
+    <li><a href="../PendingFriendRequestsController.html">PendingFriendRequestsController</a>
+  
+    <li><a href="../PendingFriendRequestsControllerTest.html">PendingFriendRequestsControllerTest</a>
+  
+    <li><a href="../PendingFriendRequestsHelper.html">PendingFriendRequestsHelper</a>
+  
+    <li><a href="../PendingFriendRequestsHelperTest.html">PendingFriendRequestsHelperTest</a>
+  
+    <li><a href="../Post.html">Post</a>
+  
+    <li><a href="../PostTest.html">PostTest</a>
+  
+    <li><a href="../PostsController.html">PostsController</a>
+  
+    <li><a href="../PostsControllerTest.html">PostsControllerTest</a>
+  
+    <li><a href="../PostsHelper.html">PostsHelper</a>
+  
+    <li><a href="../PostsHelperTest.html">PostsHelperTest</a>
+  
+    <li><a href="../User.html">User</a>
+  
+    <li><a href="../UserFriendRelation.html">UserFriendRelation</a>
+  
+    <li><a href="../UserFriendRelationTest.html">UserFriendRelationTest</a>
+  
+    <li><a href="../UserFriendRelationsController.html">UserFriendRelationsController</a>
+  
+    <li><a href="../UserFriendRelationsControllerTest.html">UserFriendRelationsControllerTest</a>
+  
+    <li><a href="../UserFriendRelationsHelper.html">UserFriendRelationsHelper</a>
+  
+    <li><a href="../UserFriendRelationsHelperTest.html">UserFriendRelationsHelperTest</a>
+  
+    <li><a href="../UserInfo.html">UserInfo</a>
+  
+    <li><a href="../UserInfoTest.html">UserInfoTest</a>
+  
+    <li><a href="../UserInfosController.html">UserInfosController</a>
+  
+    <li><a href="../UserInfosControllerTest.html">UserInfosControllerTest</a>
+  
+    <li><a href="../UserInfosHelper.html">UserInfosHelper</a>
+  
+    <li><a href="../UserInfosHelperTest.html">UserInfosHelperTest</a>
+  
+    <li><a href="../UserTest.html">UserTest</a>
+  
+    <li><a href="../UsersController.html">UsersController</a>
+  
+    <li><a href="../UsersControllerTest.html">UsersControllerTest</a>
+  
+    <li><a href="../UsersHelper.html">UsersHelper</a>
+  
+    <li><a href="../UsersHelperTest.html">UsersHelperTest</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class ActiveSupport::TestCase</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
