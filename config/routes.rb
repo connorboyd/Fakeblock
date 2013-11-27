@@ -4,6 +4,16 @@ Fakeblock::Application.routes.draw do
   get "sessions/home"
   get "sessions/profile"
   get "sessions/setting"
+  get "sessions/logout"
+
+  root :to => "sessions#login"
+  get "signup", :to => "users#new"
+  get "login", :to => "sessions#login"
+  get "logout", :to => "sessions#logout"
+  get "home", :to => "sessions#home"
+  get "profile", :to => "sessions#profile"
+  get "setting", :to => "sessions#setting"
+
   resources :user_infos
 
   resources :pending_friend_requests
