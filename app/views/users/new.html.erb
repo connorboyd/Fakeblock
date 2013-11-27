@@ -1,5 +1,25 @@
-<h1>New user</h1>
+<% @page_title = "Fakeblock | Create an account" %>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', users_path %>
+<div class="Sign_Form">
+<h1>Create a Fakeblock Account</h1>
+
+<%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+
+	<p> Email: </br> <%= f.text_field :email%> </p>
+	<p> First name: </br> <%= f.text_field :first_name%> </p>
+	<p> Last name: </br> <%= f.text_field :last_name%> </p>
+	<p> Password: </br> <%= f.password_field :password%> </p>
+	<p> Password Confirmation:</br> <%= f.password_field :password_confirmation%> </p>
+	<%= f.submit :Signup %>
+<% end %>
+
+
+
+</div>
+
+
+
+<%#= render 'form' %>
+
+<%#= link_to 'Back', users_path %>
