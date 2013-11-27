@@ -1,4 +1,9 @@
 Fakeblock::Application.routes.draw do
+  get "sessions/login"
+  post "sessions/login_attempt"
+  get "sessions/home"
+  get "sessions/profile"
+  get "sessions/setting"
   resources :user_infos
 
   resources :pending_friend_requests

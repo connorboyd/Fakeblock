@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 	end
 
 	def match_password(login_password = "")
-		encrypted_password == Digest::SHA1.hexdigest(password)
+		password == Digest::SHA1.hexdigest(login_password)
 	end
 	# encrypted_password= Digest::SHA1.hexdigest(password)
 
