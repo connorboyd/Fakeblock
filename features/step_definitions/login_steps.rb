@@ -1,7 +1,7 @@
 require 'uri'
 require 'cgi'
 
-Given /^(?:I )am on the "(.*?)" page$/ do |page_name|
+Given /^(?:I )am on (?:.*\s)"(.*?)" page$/ do |page_name|
 	#visit path_to(page_name)
 end
 
