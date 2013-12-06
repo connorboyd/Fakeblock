@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   	if authorized_user
   		session[:user_id] = authorized_user.id
   		flash[:notice] = "You are now logged in as #{authorized_user.first_name} #{authorized_user.last_name}"
-  		redirect_to(:action => 'profile')
+  		redirect_to("/newsfeed")
   	else
   		flash[:notice] = "Login unsuccessful"
   		flash[:color]  = "invalid"

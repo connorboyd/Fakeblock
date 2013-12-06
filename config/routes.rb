@@ -13,6 +13,7 @@ Fakeblock::Application.routes.draw do
   get "home", :to => "sessions#home"
   get "profile", :to => "sessions#profile"
   get "setting", :to => "sessions#setting"
+  get "newsfeed", :to => "posts#newsfeed"
 
   resources :user_infos
 
