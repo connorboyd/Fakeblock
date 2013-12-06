@@ -15,6 +15,8 @@ Fakeblock::Application.routes.draw do
   get "setting", :to => "sessions#setting"
   get "newsfeed", :to => "posts#newsfeed"
 
+  get "create_account", :to => "users#new"
+
   resources :user_infos
 
   resources :pending_friend_requests
