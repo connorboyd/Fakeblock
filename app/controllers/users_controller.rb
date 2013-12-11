@@ -23,6 +23,10 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def search
+    @users = Users.search params[:search]
+  end
+
   # POST /users
   # POST /users.json
   def create
