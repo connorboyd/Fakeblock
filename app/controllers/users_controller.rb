@@ -26,7 +26,11 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    if(user_params[:password] == user_params[:password_confirmation])
+      @user = User.new(user_params)
+    else
+      #Passwords do not match! What to do here?
+    end
 
     respond_to do |format|
       if @user.save
@@ -71,6 +75,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_id, :email, :first_name, :last_name, :password)
+      params.require(:user).permit(:user_id, :email, :first_name, :last_name, :password, :password_confirmation)
     end
 end
