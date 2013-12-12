@@ -14,6 +14,10 @@ class UsersController < ApplicationController
   def show
   end
 
+  def profile
+    authenticate_user #This is only for the logged in user. It should work with any user
+  end
+
   # GET /users/new
   def new
     @user = User.new
@@ -21,6 +25,10 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def search
+    @users = Users.search params[:search]
   end
 
   # POST /users

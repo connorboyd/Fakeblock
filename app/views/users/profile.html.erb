@@ -1,0 +1,13 @@
+<h2 class='User_Header'> <%=@current_user.first_name%> <%=@current_user.last_name%>'s  Profile </h2>
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+
+<p>Find me in app/views/sessions/profile.html.erb</p>

@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
 
-  before_filter :authenticate_user, :only => [:home, :profile, :setting]
+  before_filter :authenticate_user, :only => [:home, :setting]
   before_filter :save_login_state, :only => [:login, :login_attempt]
 
   def login_attempt
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   		flash[:notice] = "You are now logged in as #{authorized_user.first_name} #{authorized_user.last_name}"
   		redirect_to("/newsfeed")
   	else
-  		flash[:notice] = "Login unsuccessful"
+  		flash[:alert] = "Login unsuccessful!"
   		flash[:color]  = "invalid"
   		render "login"
   	end
@@ -21,13 +21,11 @@ class SessionsController < ApplicationController
 
   def logout
   	session[:user_id] = nil
+    # flash[:notice] = "You have logged out"
   	redirect_to :action => 'login'
   end
 
   def home
-  end
-
-  def profile
   end
 
   def setting
