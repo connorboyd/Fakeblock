@@ -15,7 +15,20 @@ class UsersController < ApplicationController
   end
 
   def profile
-    authenticate_user #This is only for the logged in user. It should work with any user
+    @user   = User.find(params[:id])
+    @books  = Book.find_by_user_id( params[:id])
+    @movies = Movie.find_by_user_id(params[:id])
+    @music  = Music.find_by_user_id(params[:id])
+
+    # @myPosts  = Post.find_all_by_user_id(params[:id])
+
+    @myPosts  = Post.where(user_id: params[:id]).order(created_at: :desc).take(10)
+
+    # @postsOnMyWall = Post.find_all_by_on_wall_of_user(params[:id])
+
+    @postsOnMyWall = Post.where(on_wall_of_user: params[:id]).order(created_at: :desc).take(10)
+
+    @allPosts = @myPosts.zip(@postsOnMyWall).flatten.sort_by!{|post| post.created_at}
   end
 
   # GET /users/new

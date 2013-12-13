@@ -1,10 +1,21 @@
-<h2 class='User_Header'> <%=@current_user.first_name%> <%=@current_user.last_name%>'s  Profile </h2>
-
-
+<h2 class='User_Header'> <%=@user.first_name%> <%=@user.last_name%>'s  Profile </h2>
 
 
 <p id="notice"><%= notice %></p>
 
+
+
+<% if @books != nil %>
+	<p>Books: <%=@books.book_names%> </p>
+<% end %>
+
+<% if @movies != nil %>
+	<p>Movies: <%=@movies.movie_names%> </p>
+<% end %>
+
+<% if @music != nil %>
+	<p>Music: <%=@music.artists%> </p>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
