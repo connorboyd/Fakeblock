@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @users = User.find_all_by_last_name(params[:search])
   end
 
   # GET /users/1
@@ -70,11 +71,10 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:last_name])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:user_id, :email, :first_name, :last_name, :password)
     end
-end
+  end

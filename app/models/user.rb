@@ -34,9 +34,4 @@ class User < ActiveRecord::Base
 	validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
 	validates :password, :confirmation => true #password_confirmation attr
 	validates_length_of :password, :in => 6..20, :on => :create
-
-	def self.search(search)
-		search_condition = "%" + search + "%"
-		find(:all, :conditions => ['last_name LIKE ?', search_condition])
-	end
 end
