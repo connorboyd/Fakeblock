@@ -20,9 +20,13 @@ test: &test
 
 production:
   adapter: postgresql
-  database: db/production.sqlite3
+  encoding: unicode
   pool: 5
-  timeout: 5000
+  database: d1gg9684mn6b9u
+  username: snlgaxlrnzqdik
+  password: YhNOwj-EKZE2CenrPtUJsMfNTH
+  host: ec2-54-235-180-39.compute-1.amazonaws.com
+  port: 5432
 
 cucumber:
   <<: *test
