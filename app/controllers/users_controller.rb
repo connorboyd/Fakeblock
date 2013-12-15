@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def profile
     @user   = User.find(params[:id])
-    @books  = Book.find_by_user_id( params[:id])
+    @books  = Book.find_by_user_id(params[:id])
     @movies = Movie.find_by_user_id(params[:id])
     @music  = Music.find_by_user_id(params[:id])
 
