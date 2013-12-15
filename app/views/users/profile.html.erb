@@ -9,6 +9,7 @@
 
 <h2>About Me:</h2>
 
+<h3>Interests</h3>
 
 <% if @books != nil %>
 	<p>Books I like: <%=@books.book_names%> </p>
@@ -20,6 +21,35 @@
 
 <% if @music != nil %>
 	<p>Music I like: <%=@music.artists%> </p>
+<% end %>
+
+<% if @user_info != nil %>
+	
+	<h3>Personal Info</h3>
+
+
+	<% if @user_info.hometown != nil %>
+		<p>Hometown: <%=@user_info.hometown%></p>
+	<% end %>
+
+	<% if @user_info.birthday != nil %>
+		<p>Birthday: <%=@user_info.birthday%></p>
+	<% end %>
+
+	<% if @user_info.school != nil %>
+		<p>School: <%=@user_info.school%></p>
+	<% end %>
+
+	<% if @user_info.job != nil %>
+		<p>Job: <%=@user_info.job%></p>
+	<% end %>
+
+	<% if @user_info.quotes != nil %>
+		<p>Favorite Quotes: <%=@user_info.quotes%></p>
+	<% end %>
+
+
+
 <% end %>
 
 </div>
