@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+
+	has_many :user_friend_relations
+	has_many :users, through: :user_friend_relations
+
+
 	require 'digest/sha1'
 
 	before_save :encrypt_password
