@@ -17,8 +17,19 @@
 	<p>Music: <%=@music.artists%> </p>
 <% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h3 class='wall_header'><%=@user.first_name%> <%=@user.last_name%>'s Wall</h3>
+
+<a href='/profile?id=<%=@user.id%>' > Profile </a>
+
+<% @allPosts.each { |post|  %>
+		<%= User.find(post[:user]) %>
+		<%= post[:status]  %>
+		<br>
+<% } %>
+
+<%#= link_to 'Edit', edit_user_path(@user) %> 
+<%#= link_to 'Back', users_path %>
 
 
-<p>Find me in app/views/sessions/profile.html.erb</p>
+<!-- <p>Find me in app/views/sessions/profile.html.erb</p>
+ -->
