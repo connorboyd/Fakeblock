@@ -3,29 +3,57 @@
 
 <p id="notice"><%= notice %></p>
 
+<% @current_user %>
+
+<div id='about_me_section'>
+
+<h2>About Me:</h2>
 
 
 <% if @books != nil %>
-	<p>Books: <%=@books.book_names%> </p>
+	<p>Books I like: <%=@books.book_names%> </p>
 <% end %>
 
 <% if @movies != nil %>
-	<p>Movies: <%=@movies.movie_names%> </p>
+	<p>Movies I like: <%=@movies.movie_names%> </p>
 <% end %>
 
 <% if @music != nil %>
-	<p>Music: <%=@music.artists%> </p>
+	<p>Music I like: <%=@music.artists%> </p>
 <% end %>
 
+</div>
+
 <h3 class='wall_header'><%=@user.first_name%> <%=@user.last_name%>'s Wall</h3>
+<div id='profile_wall'>
+
+<%= form_for(:post, :url => {:controller => 'posts', :action => 'create'}) do |f| %>
+
+	<p>Write on <%=@user.first_name%> <%=@user.last_name%>'s wall</p>
+	<%= f.hidden_field( :on_wall_of_user, :value => @user.id ) %>
+	<%= f.hidden_field( :user_id, :value => @current_user.id ) %>
+
+	<p><%= f.text_area :status %></p>
+
+	<%= f.submit %>
+
+
+<% end %>
 
 
 <% @allPosts.each { |post|  %>
+
+
+
+<div class='wall_post_div'>
 		<% @poster = User.find(post[:user_id]) %>
 		<a href='/profile?id=<%=@poster.id %>'><%= "%s %s" % [@poster.first_name, @poster.last_name] %></a>
 		<%= post[:status]  %>
-		<br><br>
+</div>
+		<br>
 <% } %>
+
+</div>
 
 <%#= link_to 'Edit', edit_user_path(@user) %> 
 <%#= link_to 'Back', users_path %>
