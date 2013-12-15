@@ -16,7 +16,20 @@ class UsersController < ApplicationController
   end
 
   def profile
-    authenticate_user #This is only for the logged in user. It should work with any user
+    @user   = User.find(params[:id])
+    @books  = Book.find_by_user_id( params[:id])
+    @movies = Movie.find_by_user_id(params[:id])
+    @music  = Music.find_by_user_id(params[:id])
+
+    # @myPosts  = Post.find_all_by_user_id(params[:id])
+
+    @myPosts  = Post.where(user_id: params[:id]).order(created_at: :desc).take(10)
+
+    # @postsOnMyWall = Post.find_all_by_on_wall_of_user(params[:id])
+
+    @postsOnMyWall = Post.where(on_wall_of_user: params[:id]).order(created_at: :desc).take(10)
+
+    @allPosts = @myPosts.zip(@postsOnMyWall).flatten.sort_by!{|post| post.created_at}
   end
 
   # GET /users/new
@@ -35,7 +48,11 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    if(user_params[:password] == user_params[:password_confirmation])
+      @user = User.new(user_params)
+    else
+      #Passwords do not match! What to do here?
+    end
 
     respond_to do |format|
       if @user.save
@@ -79,6 +96,6 @@ class UsersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_id, :email, :first_name, :last_name, :password)
+      params.require(:user).permit(:user_id, :email, :first_name, :last_name, :password, :password_confirmation)
     end
   end
