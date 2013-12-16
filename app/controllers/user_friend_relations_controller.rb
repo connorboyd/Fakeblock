@@ -28,7 +28,7 @@ class UserFriendRelationsController < ApplicationController
 
     respond_to do |format|
       if @user_friend_relation.save
-        format.html { redirect_to @user_friend_relation, notice: 'User friend relation was successfully created.' }
+        format.html { redirect_to '/profile?id=%s' % [session[:user_id]], notice: 'User friend relation was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user_friend_relation }
       else
         format.html { render action: 'new' }

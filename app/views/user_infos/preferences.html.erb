@@ -1,4 +1,4 @@
-<h2>User Preferences</h2>
+<h1>User Preferences</h1>
 
 <table>
   <thead>
@@ -41,3 +41,52 @@
       </tr>
     </tbody>
   </table>
+
+<h2>Clear your wall</h2>
+<%= form_for(:post, :url => "/posts/remove_all") do |f| %>
+  <%= f.hidden_field(:on_wall_of_user, :value => session[:user_id]) %>
+  <%= f.submit %>
+  <% end %>
+
+<p></p>
+  <h2>Pending Friend Requests</h2>
+  <table>
+    <thead>
+      <tr>
+        <th width="20%;">First Name</th>
+        <th width="20%;">Last Name</th>
+        <th width="30%;">Accept</th>
+        <th>Deny</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pending_friends.each do |request| %>
+      <tr>
+        <td><%= User.find(request.from_user_id).first_name.titleize %></td>
+        <td><%= User.find(request.from_user_id).last_name.titleize %></td>
+        <td><%= form_for(:user_friend_relation, :url => {:controller => 'user_friend_relations', :action => 'create'}) do |f| %>
+            <%= f.hidden_field( :user_id1, :value => @current_user.id ) %>
+            <%= f.hidden_field( :user_id2, :value => request.from_user_id ) %>
+            <%= f.submit "Accept" %>
+            <% end %></td>
+        <td><%= link_to 'Deny', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+    </tbody>
+  </table>
+
+<p></p>
+
+<h2>Friends</h2>
+  <table>
+    <thead>
+      <th float="left;">Name</th>
+    </thead>
+    <tbody>
+      <% @current_user.get_friend_objects.each do |friend| %>
+      <tr>
+        <td><%= link_to ("%s %s" % [friend.first_name.titleize,friend.last_name.titleize]), '/profile?id=%s' % [friend.id] %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

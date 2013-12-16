@@ -21,6 +21,7 @@ class PendingFriendRequestsController < ApplicationController
   def edit
   end
 
+
   # POST /pending_friend_requests
   # POST /pending_friend_requests.json
   def create
@@ -56,7 +57,7 @@ class PendingFriendRequestsController < ApplicationController
   def destroy
     @pending_friend_request.destroy
     respond_to do |format|
-      format.html { redirect_to pending_friend_requests_url }
+      format.html { redirect_to '/profile?id=%s' % [session[:user_id]] }
       format.json { head :no_content }
     end
   end

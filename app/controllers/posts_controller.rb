@@ -57,12 +57,17 @@ class PostsController < ApplicationController
     end
   end
 
+def delete
+  Post.destroy_all(post_params[:on_wall_of_user])
+  redirect_to '/profile?id=%s' % [session[:user_id]]
+end
+
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to '/profile?id=%s' % [session[:user_id]] }
       format.json { head :no_content }
     end
   end
