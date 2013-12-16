@@ -28,7 +28,7 @@ class PendingFriendRequestsController < ApplicationController
 
     respond_to do |format|
       if @pending_friend_request.save
-        format.html { redirect_to @pending_friend_request, notice: 'Pending friend request was successfully created.' }
+        format.html { redirect_to '/profile', notice: 'Friend request sent!' }
         format.json { render action: 'show', status: :created, location: @pending_friend_request }
       else
         format.html { render action: 'new' }

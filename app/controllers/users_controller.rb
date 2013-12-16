@@ -16,20 +16,27 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @user   = User.find(params[:id])
-    @books  = Book.find_by_user_id(params[:id])
-    @movies = Movie.find_by_user_id(params[:id])
-    @music  = Music.find_by_user_id(params[:id])
+    authenticate_user
 
-    # @myPosts  = Post.find_all_by_user_id(params[:id])
+    @profile_id = params[:id]
+    @profile_id = @profile_id || session[:user_id]  # If no user id is specified in params, go to current user's profile
+    
+    @user      = User.find(@profile_id)
 
-    @myPosts  = Post.where(user_id: params[:id]).take(10)
+    @books     = Book.find_by_user_id(@profile_id)
+    @movies    = Movie.find_by_user_id(@profile_id)
+    @music     = Music.find_by_user_id(@profile_id)
+    @user_info = UserInfo.find_by_user_id(@profile_id)
 
-    # @postsOnMyWall = Post.find_all_by_on_wall_of_user(params[:id])
 
-    @postsOnMyWall = Post.where(on_wall_of_user: params[:id]).take(10)
+    # @myPosts  = Post.where(user_id: @profile_id).take(10)
 
-    @allPosts = @myPosts.zip(@postsOnMyWall).flatten.sort_by!{|post| :created_at}.compact
+
+    # @postsOnMyWall = Post.where(on_wall_of_user: @profile_id).take(10)
+
+    # @allPosts = @myPosts.zip(@postsOnMyWall).flatten.sort_by!{|post| :created_at}.compact
+
+    @allPosts = Post.where(on_wall_of_user: @profile_id).order(created_at: :desc).take(20)
   end
 
   # GET /users/new
@@ -57,10 +64,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         @books = Book.new("").save
         @movies = Movie.new("").save
         @music = Music.new("").save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to '/profile', notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
