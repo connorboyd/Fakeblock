@@ -30,10 +30,7 @@ class UsersController < ApplicationController
 
 
     # @myPosts  = Post.where(user_id: @profile_id).take(10)
-
-
     # @postsOnMyWall = Post.where(on_wall_of_user: @profile_id).take(10)
-
     # @allPosts = @myPosts.zip(@postsOnMyWall).flatten.sort_by!{|post| :created_at}.compact
 
     @allPosts = Post.where(on_wall_of_user: @profile_id).order(created_at: :desc).take(20)

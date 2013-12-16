@@ -84,8 +84,6 @@
 
 <% @allPosts.each { |post|  %>
 
-
-
 <div class='wall_post_div'>
 		<% @poster = User.find(post[:user_id]) %>
 		<a href='/profile?id=<%=@poster.id %>'><%= "%s %s" % [@poster.first_name, @poster.last_name] %></a>

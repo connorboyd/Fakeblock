@@ -9,7 +9,8 @@ class PostsController < ApplicationController
 
 
   def newsfeed
-    p "newsfeed..."
+    authenticate_user
+    @allPosts = Post.where(user_id: @current_user.get_friends_ids << @current_user.id).order(created_at: :desc)
   end
 
   # GET /posts/1

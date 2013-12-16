@@ -4,4 +4,30 @@
 	<div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<h2>TODO</h2>
+
+<%= form_for(:post, :url => {:controller => 'posts', :action => 'create'}) do |f| %>
+
+	<p>Update your status</p>
+	<%= f.hidden_field( :on_wall_of_user, :value => @current_user.id ) %>
+	<%= f.hidden_field( :user_id, :value => @current_user.id ) %>
+
+	<p><%= f.text_area :status %></p>
+
+	<%= f.submit %>
+
+
+<% end %>
+
+
+<% @allPosts.each { |post|  %>
+
+<div class='wall_post_div'>
+		<% @poster = User.find(post[:user_id]) %>
+		<a href='/profile?id=<%=@poster.id %>'><%= "%s %s" % [@poster.first_name.titleize, @poster.last_name.titleize] %></a>
+		<%= post[:status]  %>
+</div>
+		<br>
+<% } %>
+
+
+
