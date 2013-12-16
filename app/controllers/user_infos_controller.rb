@@ -54,7 +54,8 @@ class UserInfosController < ApplicationController
           @user_info.quotes = ""
         end
       end
-
+    @pending_friends = PendingFriendRequest.where(to_user_id: session[:user_id]).where.not(from_user_id: @current_user.get_friends_ids)
+    @wall_posts = Post.where(on_wall_of_user: session[:user_id])
   end
 
   # POST /user_infos

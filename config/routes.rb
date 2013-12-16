@@ -19,6 +19,7 @@ Fakeblock::Application.routes.draw do
   post "books/update", :to => "books#update"
   post "movies/update", :to => "movies#update"
   post "musics/update", :to => "musics#update"
+  post "posts/remove_all", :to => "posts#delete"
 
   get "create_account", :to => "users#new"
 
