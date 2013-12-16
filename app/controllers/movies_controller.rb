@@ -42,7 +42,7 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
+        format.html {  redirect_to '/profile?id=%s' % [session[:user_id]], notice: 'Movie was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -64,7 +64,10 @@ class MoviesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
-      @movie = Movie.find(params[:id])
+      @movie = Movie.find_by_user_id(session[:user_id])
+      if @movie == nil
+        @movie = Movie.new(movie_params)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

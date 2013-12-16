@@ -12,9 +12,9 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td width="100px;"><a href='/profile?id=<%=user.id %>'><%= "%s %s" % [user.first_name, user.last_name] %></a></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
+        <td width="100px;"><a href='/profile?id=<%=user.id %>'><%= "%s %s" % [user.first_name.titleize, user.last_name.titleize] %></a></td>
+        <td><%= user.first_name.titleize %></td>
+        <td><%= user.last_name.titleize %></td>
       </tr>
     <% end %>
   </tbody>

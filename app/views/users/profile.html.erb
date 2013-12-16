@@ -17,7 +17,7 @@
 	<p>Music: <%=@music.artists%> </p>
 <% end %>
 
-<h3 class='wall_header'><%=@user.first_name%> <%=@user.last_name%>'s Wall</h3>
+<h3 class='wall_header'><%=@user.first_name.titleize%> <%=@user.last_name.titleize%>'s Wall</h3>
 
 <a href='/profile?id=<%=@user.id%>' > Profile </a>
 

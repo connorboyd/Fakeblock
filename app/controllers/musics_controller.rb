@@ -42,7 +42,7 @@ class MusicsController < ApplicationController
   def update
     respond_to do |format|
       if @music.update(music_params)
-        format.html { redirect_to @music, notice: 'Music was successfully updated.' }
+        format.html {  redirect_to '/profile?id=%s' % [session[:user_id]], notice: 'Music was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -64,7 +64,10 @@ class MusicsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_music
-      @music = Music.find(params[:id])
+      @music = Music.find_by_user_id(session[:user_id])
+      if @music == nil
+        @music = Music.new(music_params)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

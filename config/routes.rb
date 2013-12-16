@@ -14,6 +14,11 @@ Fakeblock::Application.routes.draw do
   get "profile", :to => "users#profile"
   get "setting", :to => "sessions#setting"
   get "newsfeed", :to => "posts#newsfeed"
+  get "preferences", :to => "user_infos#preferences"
+  post "update", :to => "user_infos#update"
+  post "books/update", :to => "books#update"
+  post "movies/update", :to => "movies#update"
+  post "musics/update", :to => "musics#update"
 
   get "create_account", :to => "users#new"
 
