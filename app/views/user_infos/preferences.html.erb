@@ -1,0 +1,43 @@
+<h2>User Preferences</h2>
+
+<table>
+  <thead>
+    <tr>
+        <th>User Info</th>
+        <th>User Interests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%;">
+        <%= form_for(:user_info, :url => {:controller => "user_infos", :action => 'update'}) do |f| %>
+            <p>Hometown: <%= f.text_field :hometown , :value => @user_info.hometown%></p>
+            <p>Birthday:&nbsp;&nbsp;&nbsp;<%= f.text_field :birthday %></p>
+            <p>School:&nbsp;&nbsp;&nbsp;&nbsp; <%= f.text_field :school %></p>
+            <p>Job:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= f.text_field :school %></p>
+            <p>Quotes:&nbsp;&nbsp;&nbsp; <%= f.text_field :quotes %> </p>
+            <%= f.submit %>
+          <% end %>
+      </td>
+      <td width="50%;", >
+        <%= form_for(:book, :url => '/books/update') do |f| %>
+          <%= f.hidden_field :user_id, :value => session[:user_id] %>
+          <p>Books: <%= f.text_field :book_names, :value => @books.book_names %></p>
+          <%= f.submit %>
+        <% end %>
+        
+        <%= form_for(:movie, :url => '/movies/update') do |f| %>
+          <%= f.hidden_field :user_id, :value => session[:user_id] %>
+          <p>Movies: <%= f.text_field :movie_names, :value => @movies.movie_names %></p>
+          <%= f.submit %>
+        <% end %>
+
+        <%= form_for(:music, :url => '/musics/update') do |f| %>
+          <%= f.hidden_field :user_id, :value => session[:user_id] %>
+          <p>Music: <%= f.text_field :artists, :value => @music.artists %></p>
+          <%= f.submit %>
+        <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>

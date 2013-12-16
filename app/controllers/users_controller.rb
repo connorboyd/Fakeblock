@@ -57,6 +57,7 @@ class UsersController < ApplicationController
   def create
     if(user_params[:password] == user_params[:password_confirmation])
       @user = User.new(user_params)
+
     else
       #Passwords do not match! What to do here?
     end
@@ -64,6 +65,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
+        @books = Book.new("").save
+        @movies = Movie.new("").save
+        @music = Music.new("").save
         format.html { redirect_to '/profile', notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -100,7 +104,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:last_name])
+      @user = User.find(params[:last_name] || params[:id])
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
