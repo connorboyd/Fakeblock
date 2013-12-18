@@ -1,0 +1,2 @@
+We were able to implement everything we planned to.
+We did encounter one bug that we were unable to fix though. When a user accepts a friend request, the friend request stays in the database. The friend request does not show up in the preferences page once it is accepted, but if the user deletes the friend, the friend request shows up again on the preferences page
