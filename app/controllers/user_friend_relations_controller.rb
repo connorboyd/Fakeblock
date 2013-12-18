@@ -21,10 +21,25 @@ class UserFriendRelationsController < ApplicationController
   def edit
   end
 
+  def delete_friend
+    @user1 = user_friend_relation_params[:user_id1]
+    @user2 = user_friend_relation_params[:user_id2]
+
+    UserFriendRelation.delete_all(user_id1: @user1, user_id2: @user2)
+    UserFriendRelation.delete_all(user_id1: @user2, user_id2: @user1)
+    redirect_to '/profile'
+  end
+
   # POST /user_friend_relations
   # POST /user_friend_relations.json
   def create
     @user_friend_relation = UserFriendRelation.new(user_friend_relation_params)
+
+    @user1 = user_friend_relation_params[:user_id1]
+    @user2 = user_friend_relation_params[:user_id2]
+
+    PendingFriendRequest.delete_all(from_user_id: @user1, to_user_id:   @user2)
+    PendingFriendRequest.delete_all(to_user_id:   @user2, from_user_id: @user1)
 
     respond_to do |format|
       if @user_friend_relation.save

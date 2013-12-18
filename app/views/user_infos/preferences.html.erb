@@ -85,7 +85,13 @@
     <tbody>
       <% @current_user.get_friend_objects.each do |friend| %>
       <tr>
-        <td><%= link_to ("%s %s" % [friend.first_name.titleize,friend.last_name.titleize]), '/profile?id=%s' % [friend.id] %></td>
+        <td><%= link_to ("%s %s" % [friend.first_name.titleize,friend.last_name.titleize]), '/profile?id=%s' % [friend.id] %>
+        <td><%= form_for(:user_friend_relation, :url => {:controller => 'user_friend_relations', :action => 'delete_friend'}) do |f| %>
+            <%= f.hidden_field( :user_id1, :value => friend.id ) %>
+            <%= f.hidden_field( :user_id2, :value => @current_user.id ) %>
+            <%= f.submit "Delete Friend" %>
+            </td>
+            <% end %>
       <% end %>
     </tr>
   </tbody>
