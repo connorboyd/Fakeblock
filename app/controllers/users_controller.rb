@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    authenticate_user
     @users = User.all
     @users = User.find_all_by_last_name(params[:search])
   end

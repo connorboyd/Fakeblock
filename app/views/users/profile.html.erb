@@ -1,4 +1,4 @@
-<h1 class='User_Header'> <%=@user.first_name%> <%=@user.last_name%>'s  Profile </h1>
+<h1 class='User_Header'> <%=@user.first_name.titleize%> <%=@user.last_name.titleize%>'s  Profile </h1>
 
 <% if !@current_user.isFriendsWith?(@user.id) && @user.id != @current_user.id %>
 	
@@ -6,7 +6,7 @@
 	<%= form_for(:pending_friend_request, :url => {:controller => 'pending_friend_requests', :action => 'create'}) do |f| %>
 		<%= f.hidden_field( :from_user_id, :value => @current_user.id ) %>
 		<%= f.hidden_field( :to_user_id, :value => @user.id ) %>
-		<%= f.submit %>
+		<%= f.submit "Send Friend Request" %>
 	<% end %>
 
 <% else %>
