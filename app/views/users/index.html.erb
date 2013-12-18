@@ -3,9 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th text-align="left;">User</th>
-      <th>First name</th>
-      <th>Last name</th>
+      <th width="20%;" style="text-align: left;">User</th>
+      <th width="20%;" style="text-align: left;">First name</th>
+      <th width="20%;" style="text-align: left;">Last name</th>
+      <th style="text-align: left;">Send friend request</th>
     </tr>
   </thead>
 
@@ -15,6 +16,14 @@
         <td width="100px;"><a href='/profile?id=<%=user.id %>'><%= "%s %s" % [user.first_name.titleize, user.last_name.titleize] %></a></td>
         <td><%= user.first_name.titleize %></td>
         <td><%= user.last_name.titleize %></td>
+        <td><%= form_for(:pending_friend_request, :url => {:controller => 'pending_friend_requests', :action => 'create'}) do |f| %>
+          <% if !user.isFriendsWith?(@current_user.id) %>
+    <%= f.hidden_field( :from_user_id, :value => @current_user.id ) %>
+    <%= f.hidden_field( :to_user_id, :value => user.id ) %>
+    <%= f.submit "Send friend request" %>
+          <% end %>
+        <% end %>
+      </td>
       </tr>
     <% end %>
   </tbody>
